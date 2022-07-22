@@ -35,6 +35,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    region:{
+        type:String,
+        required:true
+    },
+    city:{
+        type:String,
+        required:true
+    },
     // IF the user is an admin this array will be filled with the ids of handled NonBiodegradable wastes
     // IF the user is a recycler or farmer this array will be filled with the ids of 
     //NonBiodegradable wastes Recycling requests issued by them
