@@ -52,7 +52,33 @@ async function newBioRecycle(body){
 
 }
 
+async function newNnonBioRecycle(body){
+    
+    const{
+        name,
+        image,
+        amount,
+        handled,
+        region,
+        city,
+        address,
+        user_Id
+    }=body
+    const nonBio = new NonBiodegradable({
+        name,
+        image,
+        amount,
+        handled,
+        region,
+        city,
+        address,
+        user_Id});
+    return await nonBio.save();
+
+}
+
 module.exports={
     newComplain,
-    newBioRecycle
+    newBioRecycle,
+    newNnonBioRecycle
 }
