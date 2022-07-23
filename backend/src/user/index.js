@@ -6,7 +6,7 @@ const router = Router();
 // admin signup is not allowed through the app interface
 router.post('/auth/signup', signup);
 
-//router.post('/auth/login', login);
+router.post('/auth/login', login);
 
 
 module.exports = router;
