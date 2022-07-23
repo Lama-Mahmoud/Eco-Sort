@@ -18,6 +18,9 @@ const complainSchema = new mongoose.Schema({
         type:Boolean,
         required:true
     },
+    state:{
+        type:Boolean
+    },
     address:{
         type:String,
         required:true
