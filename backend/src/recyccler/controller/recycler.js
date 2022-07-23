@@ -1,5 +1,5 @@
 const User = require('../../../models/User');
-const {newComplain}=require('../services');
+const {newComplain,newBioRecycle}=require('../services');
 
 
 async function complain(req, res) {
@@ -32,11 +32,11 @@ async function BioRecycle(req, res) {
         //updating biodegradables array
         const updateUser=await User.findByIdAndUpdate(BioRecycleReq.user_Id,
             {$push:{
-                Biodegradables:BiodegradablesReq._id
+                Biodegradables:BioRecycleReq._id
             }
 
             });
-        return res.send({ complain: BioRecycleReq._id });
+        return res.send({ Biodegradable: BioRecycleReq._id });
 
     }catch(error){
         console.log(error);

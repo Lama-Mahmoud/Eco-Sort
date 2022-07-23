@@ -1,5 +1,5 @@
 const Complain = require('../../models/Complain');
-const Complain = require('../../models/Biodegradable');
+const Biodegradable = require('../../models/Biodegradable');
 
 async function newComplain(body){
     
