@@ -54,7 +54,7 @@ async function biodegradable(req, res) {
         console.log('Result =>', biodegradableHandling);
 
         //updating non-biodegradables array
-        const updateUser=await User.findByIdAndUpdate(biodegradable.user_Id,
+        const updateUser=await User.findByIdAndUpdate(biodegradable.beneficiary_id,
             {$push:{
                 Biodegradables:biodegradableHandling._id
             }
