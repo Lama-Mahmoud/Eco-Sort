@@ -1,4 +1,4 @@
-const User = require('../../../model/User');
+const User = require('../../../models/User');
 const {newComplain}=require('../services');
 
 
@@ -7,7 +7,7 @@ async function complain(req, res) {
         const fileComplain = await newComplain(req.body);
 
         console.log('Result =>', fileComplain);
-        const updateUser=await User.findByIdAndUpdate(fileComplain.user,
+        const updateUser=await User.findByIdAndUpdate(fileComplain.user_Id,
             {$push:{
                 Complains:fileComplain._id
             }
