@@ -22,6 +22,27 @@ async function complain(req, res) {
 
 }
 
+async function BioRecycle(req, res) {
+    try{
+        const BioRecycleReq = await newBioRecycle(req.body);
+
+        console.log('Result =>', BioRecycleReq);
+        const updateUser=await User.findByIdAndUpdate(BioRecycleReq.user_Id,
+            {$push:{
+                Biodegradables:BiodegradablesReq._id
+            }
+
+            });
+        return res.send({ complain: BioRecycleReq._id });
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+
+}
+
 module.exports={
-    complain
+    complain,
+    BioRecycle
 }
