@@ -1,4 +1,5 @@
-
+const {  addUser}=require('../services');
+const bcrypt = require('bcryptjs');
 
 async function signup(req, res) {
     try {

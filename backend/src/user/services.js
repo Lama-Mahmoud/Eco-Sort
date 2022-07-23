@@ -4,23 +4,21 @@ async function addUser(body, hashPassword) {
     
     const {
         first_name,
-        lasst_name,
+        last_name,
         email,
         role,
         region,
-        city,
-        DOB
+        city
 
     } = body;
   
     const user = new User({
         first_name,
-        lasst_name,
+        last_name,
         email,
         role,
         region,
         city,
-        DOB,
         password: hashPassword
     });
   
