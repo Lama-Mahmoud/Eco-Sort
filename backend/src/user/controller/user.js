@@ -1,5 +1,7 @@
-const {  addUser}=require('../services');
+const {  addUser,getByEmail}=require('../services');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const TOKEN_SECRET = process.env.TOKEN_SECRET || "";
 
 async function signup(req, res) {
     try {
