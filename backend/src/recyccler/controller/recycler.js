@@ -6,6 +6,7 @@ async function complain(req, res) {
     try{
         const fileComplain = await newComplain(req.body);
 
+        //updating Complains array
         console.log('Result =>', fileComplain);
         const updateUser=await User.findByIdAndUpdate(fileComplain.user_Id,
             {$push:{
@@ -27,6 +28,8 @@ async function BioRecycle(req, res) {
         const BioRecycleReq = await newBioRecycle(req.body);
 
         console.log('Result =>', BioRecycleReq);
+
+        //updating biodegradables array
         const updateUser=await User.findByIdAndUpdate(BioRecycleReq.user_Id,
             {$push:{
                 Biodegradables:BiodegradablesReq._id
