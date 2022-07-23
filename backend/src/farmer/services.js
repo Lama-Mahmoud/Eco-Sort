@@ -1,4 +1,6 @@
 const Complain = require('../../models/Complain');
+const Biodegradable = require('../../models/Biodegradable');
+
 
 async function newComplain(body){
     
@@ -25,7 +27,19 @@ async function newComplain(body){
 
 }
 
+
+async function handlingBiodegradable(body){
+    console.log(body);
+    const reqId=body;
+    const biodegradable= await Biodegradable.findByIdAndUpdate(reqId,
+        {
+            state:true
+        })
+    return await biodegradable;
+}
+
 module.exports={
     newComplain,
-    
+    handlingBiodegradable,
+
 }
