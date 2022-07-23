@@ -1,5 +1,7 @@
 const Complain = require('../../models/Complain');
 const Biodegradable = require('../../models/Biodegradable');
+const NonBiodegradable = require('../../models/NonBiodegradable');
+
 
 
 async function newComplain(body){
@@ -27,6 +29,31 @@ async function newComplain(body){
 
 }
 
+async function newNnonBioRecycle(body){
+    
+    const{
+        name,
+        image,
+        amount,
+        handled,
+        region,
+        city,
+        address,
+        user_Id
+    }=body
+    const nonBio = new NonBiodegradable({
+        name,
+        image,
+        amount,
+        handled,
+        region,
+        city,
+        address,
+        user_Id});
+    return await nonBio.save();
+
+}
+
 
 async function handlingBiodegradable(body){
     console.log(body);
@@ -41,5 +68,5 @@ async function handlingBiodegradable(body){
 module.exports={
     newComplain,
     handlingBiodegradable,
-
+    newNnonBioRecycle
 }
