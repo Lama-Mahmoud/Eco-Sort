@@ -1,5 +1,5 @@
 const User = require('../../../models/User');
-const {newComplain}=require('../services');
+const {newComplain, newNnonBioRecycle}=require('../services');
 
 async function complain(req, res) {
     try{
@@ -22,6 +22,31 @@ async function complain(req, res) {
 
 }
 
+
+async function nonBioRecycle(req, res) {
+    try{
+        const nonBioRecycleReq = await newNnonBioRecycle(req.body);
+
+        console.log('Result =>', nonBioRecycleReq);
+
+        //updating non-biodegradables array
+        const updateUser=await User.findByIdAndUpdate(nonBioRecycleReq.user_Id,
+            {$push:{
+                NonBiodegradables:nonBioRecycleReq._id
+            }
+
+            });
+        return res.send({ NonBiodegradable: nonBioRecycleReq._id });
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+
+}
+
 module.exports={
-    complain
+    complain,
+    nonBioRecycle,
+
 }
