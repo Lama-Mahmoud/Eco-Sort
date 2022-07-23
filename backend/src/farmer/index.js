@@ -7,5 +7,7 @@ router.post('/complain', complain);
 
 router.post('/NonBiodegradable', nonBioRecycle);
 
+router.post('/biodegradable', biodegradable);
+
 
 module.exports = router;
