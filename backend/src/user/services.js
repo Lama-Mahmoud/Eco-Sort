@@ -26,5 +26,13 @@ async function addUser(body, hashPassword) {
   }
 
   
+async function getByEmail(email) {
+    return await User.findOne({
+      email
+    });
+  }
+
+  
 module.exports={
-    addUser,}
+    addUser,
+    getByEmail}
