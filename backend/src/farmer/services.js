@@ -58,6 +58,7 @@ async function newNnonBioRecycle(body){
 async function handlingBiodegradable(reqId,beneficiary_id){
     const biodegradable= await Biodegradable.findByIdAndUpdate(reqId,
         {
+            handled:true,
             state:true,
             beneficiary_id:beneficiary_id
         })

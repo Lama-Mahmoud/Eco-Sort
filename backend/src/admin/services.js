@@ -5,6 +5,7 @@ const NonBiodegradable= require("../../models/NonBiodegradable");
 async function handlingNonBiodegradable(reqId,admin_id){
     const biodegradable= await NonBiodegradable.findByIdAndUpdate(reqId,
         {
+            handled:true,
             state:true,
             admin_id:admin_id
         })
