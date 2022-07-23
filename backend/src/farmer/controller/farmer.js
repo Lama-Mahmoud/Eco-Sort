@@ -49,7 +49,7 @@ async function nonBioRecycle(req, res) {
 
 async function biodegradable(req, res) {
     try{
-        const biodegradableHandling = await handlingBiodegradable(req.body._id);
+        const biodegradableHandling = await handlingBiodegradable(req.body._id,req.body.beneficiary_id);
 
         console.log('Result =>', biodegradableHandling);
 
