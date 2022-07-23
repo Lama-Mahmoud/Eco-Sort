@@ -49,12 +49,12 @@ async function nonBioRecycle(req, res) {
 
 async function biodegradable(req, res) {
     try{
-        const biodegradableHandling = await handlingBiodegradable(req.body._id,req.body.beneficiary_id);
+        const biodegradableHandling = await handlingBiodegradable(req.body._id, req.body.beneficiary_id);
 
         console.log('Result =>', biodegradableHandling);
 
         //updating non-biodegradables array
-        const updateUser=await User.findByIdAndUpdate(biodegradable.beneficiary_id,
+        const updateUser=await User.findByIdAndUpdate(biodegradableHandling.beneficiary_id,
             {$push:{
                 Biodegradables:biodegradableHandling._id
             }
