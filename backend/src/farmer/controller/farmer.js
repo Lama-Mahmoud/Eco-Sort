@@ -1,5 +1,5 @@
 const User = require('../../../models/User');
-const {newComplain, newNnonBioRecycle}=require('../services');
+const {newComplain, newNnonBioRecycle,handlingBiodegradable}=require('../services');
 
 async function complain(req, res) {
     try{
@@ -36,7 +36,31 @@ async function nonBioRecycle(req, res) {
             }
 
             });
-        return res.send({ NonBiodegradable: nonBioRecycleReq._id });
+        return res.send({ NonBiodegradables: nonBioRecycleReq._id });
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+
+}
+
+
+
+async function biodegradable(req, res) {
+    try{
+        const biodegradableHandling = await handlingBiodegradable(req.body._id);
+
+        console.log('Result =>', biodegradableHandling);
+
+        //updating non-biodegradables array
+        const updateUser=await User.findByIdAndUpdate(biodegradable.user_Id,
+            {$push:{
+                Biodegradables:biodegradableHandling._id
+            }
+
+            });
+        return res.send({ Biodegradables: biodegradableHandling._id });
 
     }catch(error){
         console.log(error);
@@ -48,5 +72,5 @@ async function nonBioRecycle(req, res) {
 module.exports={
     complain,
     nonBioRecycle,
-
+    biodegradable
 }
