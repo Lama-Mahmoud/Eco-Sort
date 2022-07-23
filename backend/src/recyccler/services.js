@@ -25,6 +25,33 @@ async function newComplain(body){
 
 }
 
+
+async function newBioRecycle(body){
+    
+    const{
+        name,
+        image,
+        amount,
+        handled,
+        region,
+        city,
+        address,
+        user_Id
+    }=body
+    const comp = new Biodegradable({
+        name,
+        image,
+        amount,
+        handled,
+        region,
+        city,
+        address,
+        user_Id});
+    return await comp.save();
+
+}
+
 module.exports={
-    newComplain
+    newComplain,
+    newBioRecycle
 }
