@@ -6,7 +6,7 @@ const port = 3000;
 const userRouter = require('./src/user');
 const farmerRouter = require('./src/farmer');
 const adminRouter = require('./src/admin');
-const recyclerRouter = require('./src/recycler');
+const recyclerRouter = require('./src/recyccler');
 
 const app = express();
 
