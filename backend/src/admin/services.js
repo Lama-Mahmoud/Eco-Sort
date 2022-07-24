@@ -22,5 +22,4 @@ async function getAllComplains(body)
 module.exports={
     handlingNonBiodegradable,
     getAllComplains,
-    d
 }
