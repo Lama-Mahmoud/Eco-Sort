@@ -21,7 +21,15 @@ async function getAllComplains(region)
     return await Complain.find({region:region, handled:false});
 }
 
+
+async function getAllBioRequests(region)
+{
+    return await Biodegradable.find({region:region, handled:false});
+}
+
+
 module.exports={
     handlingNonBiodegradable,
     getAllComplains,
+    getAllBioRequests
 }
