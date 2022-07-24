@@ -6,13 +6,13 @@ const Biodegradable= require("../../models/Biodegradable");
 
 
 async function handlingNonBiodegradable(reqId,admin_id){
-    const biodegradable= await NonBiodegradable.findByIdAndUpdate(reqId,
+    const handleNonbiodegradable= await NonBiodegradable.findByIdAndUpdate(reqId,
         {
             handled:true,
             state:true,
             admin_id:admin_id
         })
-    return await biodegradable;
+    return await handleNonbiodegradable;
 }
 
 
