@@ -95,5 +95,6 @@ module.exports={
     nonBioRecycle,
     AllComplain,
     AllBioRecycle,
-    AllnonBioRecycle
+    AllnonBioRecycle,
+    complain
 }
