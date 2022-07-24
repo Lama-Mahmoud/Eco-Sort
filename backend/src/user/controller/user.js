@@ -11,9 +11,11 @@ async function signup(req, res) {
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(req.body.password, salt);
     
+        // add user to db 
         const addUserResult = await addUser(req.body, hashPassword);
         console.log('addUserResult =>', addUserResult);
         
+        //sending result as a response
         return res.send({ user: addUserResult._id });
       } catch (error) {
         console.log(error);
@@ -28,13 +30,18 @@ async function login(req, res) {
     
         // password comparison
         const validPassword = await bcrypt.compare(req.body.password, user.password);
-        if (!validPassword) return res.status(400).send('invalid credentials');
+
+        // error login
+        if (!validPassword) 
+          return res.status(400).send('invalid credentials');
     
+        // issue a jwt token if successful login
         const token = jwt.sign(
           {_id: user._id, name: user.name, email: user.email},
           TOKEN_SECRET
         );
     
+        //data sent as a response
         return res.header('auth-token', token).send({authToken:token,
            id:user._id,
            region:user.region,
