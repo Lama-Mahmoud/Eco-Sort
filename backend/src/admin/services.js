@@ -28,8 +28,15 @@ async function getAllBioRequests(region)
 }
 
 
+async function getAllNonBioRequests(region)
+{
+    return await NonBiodegradable.find({region:region, handled:false});
+}
+
+
 module.exports={
     handlingNonBiodegradable,
     getAllComplains,
-    getAllBioRequests
+    getAllBioRequests,
+    getAllNonBioRequests
 }
