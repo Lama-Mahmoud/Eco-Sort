@@ -5,6 +5,8 @@ const router = Router();
 
 router.post('/complain', complain);
 
+router.get('/complain', AllComplain);
+
 router.post('/BioRecycle', BioRecycle);
 
 router.get('/BioRecycle', AllBioRecycle);
