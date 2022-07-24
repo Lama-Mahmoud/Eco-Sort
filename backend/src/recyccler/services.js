@@ -78,8 +78,15 @@ async function newNnonBioRecycle(body){
 
 }
 
+
+async function getAllBioRequests(region)
+{
+    return await Biodegradable.find({region:region, handled:false});
+}
+
 module.exports={
     newComplain,
     newBioRecycle,
-    newNnonBioRecycle
+    newNnonBioRecycle,
+    getAllBioRequests
 }
