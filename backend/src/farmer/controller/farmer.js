@@ -1,5 +1,5 @@
 const User = require('../../../models/User');
-const {newComplain, newNnonBioRecycle,handlingBiodegradable, AllBioRecycle}=require('../services');
+const {newComplain, newNnonBioRecycle,handlingBiodegradable, getAllBioRequests}=require('../services');
 
 async function complain(req, res) {
     try{
