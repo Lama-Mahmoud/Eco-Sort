@@ -25,7 +25,8 @@ async function addUser(body, hashPassword) {
     return await user.save();
   }
 
-  
+
+  //for Login
 async function getByEmail(email) {
     return await User.findOne({
       email
