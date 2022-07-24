@@ -15,6 +15,16 @@ async function handlingNonBiodegradable(reqId,admin_id){
     return await handleNonbiodegradable;
 }
 
+async function handlingBioRecycle(reqId,beneficiary_id){
+    const handleBiodegradable= await Biodegradable.findByIdAndUpdate(reqId,
+        {
+            handled:true,
+            state:true,
+            beneficiary_id:beneficiary_id
+        })
+    return await handleBiodegradable;
+}
+
 
 async function getAllComplains(region)
 {
