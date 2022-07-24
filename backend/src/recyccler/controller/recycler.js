@@ -4,6 +4,7 @@ const {newComplain,newBioRecycle,newNnonBioRecycle}=require('../services');
 
 async function complain(req, res) {
     try{
+        //adding new Complain 
         const fileComplain = await newComplain(req.body);
 
         //updating Complains array
@@ -25,6 +26,7 @@ async function complain(req, res) {
 
 async function BioRecycle(req, res) {
     try{
+        //adding new Biodegradable 
         const BioRecycleReq = await newBioRecycle(req.body);
 
         console.log('Result =>', BioRecycleReq);
@@ -48,6 +50,7 @@ async function BioRecycle(req, res) {
 
 async function nonBioRecycle(req, res) {
     try{
+        //adding new NonBiodegradable 
         const nonBioRecycleReq = await newNnonBioRecycle(req.body);
 
         console.log('Result =>', nonBioRecycleReq);
