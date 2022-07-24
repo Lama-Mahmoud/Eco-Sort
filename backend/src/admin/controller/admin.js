@@ -19,10 +19,25 @@ async function AllComplain(req,res){
 
 async function AllBioRecycle(req,res){
     try{
-        const getComplaians=await getAllBioRequests(req.body.region);
+        const getBio=await getAllBioRequests(req.body.region);
         console.log(req.body.region);
-        console.log("Biodegradable",getComplaians);
-        return res.send({Biodegradable:getComplaians});
+        console.log("Biodegradable",getBio);
+        return res.send({Biodegradable:getBio});
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
+
+
+async function AllnonBioRecycle(req,res){
+    try{
+        const getNonBio=await getAllNonBioRequests(req.body.region);
+        console.log(req.body.region);
+        console.log("Biodegradable",getNonBio);
+        return res.send({Biodegradable:getNonBio});
 
     }catch(error){
         console.log(error);
