@@ -65,8 +65,16 @@ async function handlingBiodegradable(reqId,beneficiary_id){
     return await biodegradable;
 }
 
+
+async function getAllBioRequests(region)
+{
+    return await Biodegradable.find({region:region, handled:false});
+}
+
+
 module.exports={
     newComplain,
     handlingBiodegradable,
-    newNnonBioRecycle
+    newNnonBioRecycle,
+    getAllBioRequests
 }
