@@ -4,7 +4,6 @@ const {
     getAllComplains,
     getAllBioRequests,
     getAllNonBioRequests,
-    handlingBioRecycle,
     handlingBioRecycle}=require('../services');
 
 
