@@ -1,5 +1,5 @@
 const User = require('../../../models/User');
-const {handlingNonBiodegradable,getAllComplains}=require('../services');
+const {handlingNonBiodegradable,getAllComplains, getAllBioRequests}=require('../services');
 
 
 async function AllComplain(req,res){
@@ -14,6 +14,22 @@ async function AllComplain(req,res){
         res.status(500).send(error);
     }
 }
+
+
+
+async function AllBioRecycle(req,res){
+    try{
+        const getComplaians=await getAllBioRequests(req.body.region);
+        console.log(req.body.region);
+        console.log("complains",getComplaians);
+        return res.send({complains:getComplaians});
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
 
 async function nonBioRecycle(req, res) {
     try{
@@ -40,5 +56,7 @@ async function nonBioRecycle(req, res) {
 
 module.exports={
     nonBioRecycle,
-    AllComplain
+    AllComplain,
+    AllBioRecycle,
+    
 }
