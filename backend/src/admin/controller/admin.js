@@ -54,6 +54,7 @@ async function AllnonBioRecycle(req,res){
 
 async function nonBioRecycle(req, res) {
     try{
+        //handling a nonBiodegradable Recycle request
         const nonBiodegradableHandling = await handlingNonBiodegradable(req.body._id,req.body.admin_id);
 
         console.log('Result =>', nonBiodegradableHandling);
@@ -77,6 +78,7 @@ async function nonBioRecycle(req, res) {
 
 async function complain(req, res) {
     try{
+        //handling a Complain
         const EditComplain = await handlingComplain(req.body._id,req.body.admin_id);
 
         console.log('Result =>', EditComplain);
@@ -100,6 +102,7 @@ async function complain(req, res) {
 
 async function BioRecycle(req, res) {
     try{
+        //handling a Biodegradable Recycle request
         const EditBioRecycle = await handlingBioRecycle(req.body._id,req.body.beneficiary_id);
 
         console.log('Result =>', EditBioRecycle);
