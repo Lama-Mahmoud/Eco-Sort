@@ -55,7 +55,7 @@ async function nonBioRecycle(req, res) {
         //updating non-biodegradables array for admin
         const updateUser=await User.findByIdAndUpdate(nonBiodegradableHandling.admin_id,
             {$push:{
-                Biodegradables:nonBiodegradableHandling._id
+                NonBiodegradables:nonBiodegradableHandling._id
             }
 
             });
