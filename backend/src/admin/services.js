@@ -48,5 +48,7 @@ module.exports={
     handlingNonBiodegradable,
     getAllComplains,
     getAllBioRequests,
-    getAllNonBioRequests
+    getAllNonBioRequests,
+    handlingBioRecycle,
+    
 }
