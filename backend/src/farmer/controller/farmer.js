@@ -3,6 +3,7 @@ const {newComplain, newNnonBioRecycle,handlingBiodegradable, AllBioRecycle}=requ
 
 async function complain(req, res) {
     try{
+        //adding new Complain 
         const fileComplain = await newComplain(req.body);
 
         //updating Complains array
@@ -25,6 +26,7 @@ async function complain(req, res) {
 
 async function nonBioRecycle(req, res) {
     try{
+        //adding new Non BIodegradable 
         const nonBioRecycleReq = await newNnonBioRecycle(req.body);
 
         console.log('Result =>', nonBioRecycleReq);
@@ -49,6 +51,8 @@ async function nonBioRecycle(req, res) {
 
 async function biodegradable(req, res) {
     try{
+        
+        //taking biodegradables from Recyycler 
         const biodegradableHandling = await handlingBiodegradable(req.body._id, req.body.beneficiary_id);
 
         console.log('Result =>', biodegradableHandling);
