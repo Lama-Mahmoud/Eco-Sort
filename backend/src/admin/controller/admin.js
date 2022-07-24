@@ -91,10 +91,34 @@ async function complain(req, res) {
 
 }
 
+
+async function BioRecycle(req, res) {
+    try{
+        const EditBioRecycle = await handlingBioRecycle(req.body._id,req.body.beneficiary_id);
+
+        console.log('Result =>', EditBioRecycle);
+
+        //updating Biodegaradles array for admin
+        const updateUser=await User.findByIdAndUpdate(EditBioRecycle.beneficiary_id,
+            {$push:{
+                Biodegradables:EditBioRecycle._id
+            }
+
+            });
+        return res.send({ Biodegradable: EditBioRecycle._id });
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+
+}
+
 module.exports={
     nonBioRecycle,
     AllComplain,
     AllBioRecycle,
     AllnonBioRecycle,
-    complain
+    complain,
+    BioRecycle
 }
