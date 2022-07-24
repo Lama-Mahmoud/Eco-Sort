@@ -69,6 +69,28 @@ async function nonBioRecycle(req, res) {
 }
 
 
+async function complain(req, res) {
+    try{
+        const EditComplain = await handlingComplain(req.body._id,req.body.admin_id);
+
+        console.log('Result =>', EditComplain);
+
+        //updating Complains array for admin
+        const updateUser=await User.findByIdAndUpdate(EditComplain.admin_id,
+            {$push:{
+                Complains:EditComplain._id
+            }
+
+            });
+        return res.send({ Complains: EditComplain._id });
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+
+}
+
 module.exports={
     nonBioRecycle,
     AllComplain,
