@@ -73,5 +73,5 @@ module.exports={
     nonBioRecycle,
     AllComplain,
     AllBioRecycle,
-
+    AllnonBioRecycle
 }
