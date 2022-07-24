@@ -26,6 +26,17 @@ async function handlingBioRecycle(reqId,beneficiary_id){
 }
 
 
+async function handlingComplain(reqId,admin_id){
+    const handleComplain= await Complain.findByIdAndUpdate(reqId,
+        {
+            handled:true,
+            state:true,
+            admin_id:admin_id
+        })
+    return await handleComplain;
+}
+
+
 async function getAllComplains(region)
 {
     return await Complain.find({region:region, handled:false});
@@ -50,5 +61,5 @@ module.exports={
     getAllBioRequests,
     getAllNonBioRequests,
     handlingBioRecycle,
-    
+
 }
