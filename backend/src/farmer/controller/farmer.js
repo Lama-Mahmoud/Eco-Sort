@@ -69,8 +69,23 @@ async function biodegradable(req, res) {
 
 }
 
+
+async function AllBioRecycle(req,res){
+    try{
+        const getBio=await getAllBioRequests(req.body.region);
+        console.log(req.body.region);
+        console.log("Biodegradable",getBio);
+        return res.send({Biodegradable:getBio});
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
 module.exports={
     complain,
     nonBioRecycle,
-    biodegradable
+    biodegradable,
+    AllBioRecycle
 }
