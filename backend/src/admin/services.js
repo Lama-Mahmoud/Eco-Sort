@@ -61,5 +61,5 @@ module.exports={
     getAllBioRequests,
     getAllNonBioRequests,
     handlingBioRecycle,
-
+    handlingBioRecycle
 }
