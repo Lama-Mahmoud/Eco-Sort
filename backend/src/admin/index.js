@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { complain,BioRecycle, nonBioRecycle,AllBioRecycle,AllnonBioRecycle } = require('./controller/admin');
+const {AllComplain, complain,BioRecycle, nonBioRecycle,AllBioRecycle,AllnonBioRecycle } = require('./controller/admin');
 const router = Router();
 
 
