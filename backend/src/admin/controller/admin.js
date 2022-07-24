@@ -4,7 +4,7 @@ const {handlingNonBiodegradable,getAllComplains}=require('../services');
 
 async function AllComplain(req,res){
     try{
-        const getComplaians=await getAllComplains(req.body);
+        const getComplaians=await getAllComplains(req.body.region);
         console.log("complains",getComplaians);
         return res.send({complains:getComplaians});
 

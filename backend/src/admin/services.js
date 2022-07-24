@@ -13,9 +13,8 @@ async function handlingNonBiodegradable(reqId,admin_id){
 }
 
 
-async function getAllComplains(body)
+async function getAllComplains(region)
 {
-    const region=body.region;
     return await Complain.find({region:region, handled:false});
 }
 
