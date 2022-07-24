@@ -21,8 +21,8 @@ async function AllBioRecycle(req,res){
     try{
         const getComplaians=await getAllBioRequests(req.body.region);
         console.log(req.body.region);
-        console.log("complains",getComplaians);
-        return res.send({complains:getComplaians});
+        console.log("Biodegradable",getComplaians);
+        return res.send({Biodegradable:getComplaians});
 
     }catch(error){
         console.log(error);
@@ -58,5 +58,5 @@ module.exports={
     nonBioRecycle,
     AllComplain,
     AllBioRecycle,
-    
+
 }
