@@ -1,9 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(
-  const MaterialApp(home: MainPage(),
-));
+
+void main(){runApp(
+  const MaterialApp(home: MainPage()
+  )
+  );
+}
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class MainPage extends StatelessWidget {
           image: AssetImage("assets/White_logo.png")
           ),
       ),
+      
     );
   }
 }
