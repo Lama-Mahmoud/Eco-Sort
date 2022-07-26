@@ -2,16 +2,16 @@
 
 import 'package:flutter/material.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return SignupState();
+    return LoginState();
   }
 }
 
-class SignupState extends State<Signup> {
+class LoginState extends State<Login> {
   late String _email;
   late String _password;
 
