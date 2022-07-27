@@ -2,6 +2,7 @@
 import 'package:frontend/Users/user/login.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -224,8 +225,14 @@ class SignupState extends State<Signup> {
                   style: TextButton.styleFrom(
                     backgroundColor: const Color(0xFF5BB259),
                     primary: const Color(0xFFFEFEFE),
-                  ),onPressed: () {
-                    
+                  ),onPressed: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    await prefs.clear();
+                    await prefs.setString('email', _email);
+                    await prefs.setString('l_nmae', _lname);
+                    await prefs.setString('f_name', _fname);
+                    await prefs.setString('city', _city);
+                    await prefs.setString('region', _region);
                   },
                 )
                 ),),
