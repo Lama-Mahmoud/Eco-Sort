@@ -19,12 +19,53 @@ class SignupState extends State<Signup> {
   late String _password;
   late String _region;
   late String _city;
-  late String _dob;
-  late String _gender;
+
+  Widget _buildFname() {
+    return TextFormField(
+      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
+      decoration: const InputDecoration(
+        labelText: 'First Name',
+        hintText: 'First Name ....',
+        border: OutlineInputBorder() ),
+      validator: ( value) {
+        if (value ==null) {
+          return 'First Name is Required';
+        }
+        return null;
+      },
+      onSaved: ( value) {
+        _fname = value!;
+      },
+    );
+  }
+
+
+
+  Widget _buildLname() {
+    return TextFormField(
+      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
+      decoration: const InputDecoration(
+        labelText: 'Last Name ',
+        hintText: 'Last Name...',
+        border: OutlineInputBorder() ),
+      validator: ( value) {
+        if (value ==null) {
+          return 'LAst Name is Required';
+        }
+        return null;
+      },
+      onSaved: ( value) {
+        _lname = value!;
+      },
+    );
+  }
+
+
 
 // Email textfield
   Widget _buildEmail() {
     return TextFormField(
+      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
       decoration: const InputDecoration(
         labelText: 'Email',
         hintText: 'Email...',
@@ -71,6 +112,54 @@ class SignupState extends State<Signup> {
     );
   }
 
+// city textfield
+  Widget _buildCity() {
+    return TextFormField(
+      cursorHeight: 20,
+      decoration: const InputDecoration(
+        labelText: 'City',
+        hintText: 'City...',
+        border: OutlineInputBorder() ),
+       //password validation 
+      validator: ( value) {
+        if (value ==null) {
+          return 'City is Required';
+        }
+
+        return null;
+      },
+      onSaved: ( value) {
+        _city = value!;
+      },
+    );
+  }
+
+
+  Widget _buildRegion(){
+    List <String> items=['South', 'North', 'Beirut', 'Mont Lebanon','Nabatieh','Beqaa'];
+    String? selectedItem="Beirut";
+    return DropdownButtonFormField<String>(
+      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
+      decoration: const InputDecoration(
+        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF999999) ,width: 1))
+      ),
+      value: selectedItem,
+      items: items
+        .map((item) => DropdownMenuItem(
+          value: item,
+          child: Text(item),)
+          ).toList(),
+          onChanged:(item) =>setState(() {
+            selectedItem=item;
+            print(selectedItem);
+          }) ,
+          onSaved: (value){
+            _city=value!;          },
+        );
+  }
+
+  
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -91,15 +180,46 @@ class SignupState extends State<Signup> {
                     color: Color(0xFF999999), 
                     fontSize: 25,)
                 ),
-                FractionallySizedBox(
-                  widthFactor: 1.0,
+
+//sign up form
+
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child:_buildFname(),),//first name
+
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child:_buildLname(),),// last name
+                  
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child:_buildEmail(),),// email
+
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child:_buildPassword()),// password (it is hashed in the backend)
+
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child:_buildRegion(),),//Region dropdown List
+
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child:_buildCity(),), // city or village
+
+
+                Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child:FractionallySizedBox(
+                  widthFactor: 1,
                   child: TextButton(
                   child: const Padding(
-                  padding: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Text("Sign up",
                   style: TextStyle(
                     color: Colors.white, 
-                    fontSize: 25,),),
+                    fontSize: 20,
+                    ),),
                   ),
                   style: TextButton.styleFrom(
                     backgroundColor: const Color(0xFF5BB259),
@@ -108,7 +228,7 @@ class SignupState extends State<Signup> {
                     
                   },
                 )
-                ),
+                ),),
                 const SizedBox(height:10),
                  Row(
                   mainAxisAlignment: MainAxisAlignment.center,
