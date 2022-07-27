@@ -22,6 +22,55 @@ class SignupState extends State<Signup> {
   late String _dob;
   late String _gender;
 
+// Email textfield
+  Widget _buildEmail() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Email',
+        hintText: 'Email...',
+        border: OutlineInputBorder() ),
+      validator: ( value) {
+        if (value ==null) {
+          return 'Email is Required';
+        }
+      // Email validation
+        if (!RegExp(
+                r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+            .hasMatch(value)) {
+          return 'Please enter a valid email Address';
+        }
+
+        return null;
+      },
+      onSaved: ( value) {
+        _email = value!;
+      },
+    );
+  }
+
+// Password textfield
+  Widget _buildPassword() {
+    return TextFormField(
+      obscureText: true,
+      obscuringCharacter: "*",
+      decoration: const InputDecoration(
+        labelText: 'Password',
+        hintText: 'Password...',
+        border: OutlineInputBorder() ),
+       //password validation 
+      validator: ( value) {
+        if (value ==null) {
+          return 'Password is Required';
+        }
+
+        return null;
+      },
+      onSaved: ( value) {
+        _password = value!;
+      },
+    );
+  }
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
