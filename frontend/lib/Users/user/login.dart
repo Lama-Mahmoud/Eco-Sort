@@ -1,4 +1,6 @@
 // ignore_for_file: avoid_print
+import 'package:frontend/Users/user/signup.dart';
+
 import 'login_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -122,7 +124,10 @@ class LoginState extends State<Login> {
                       style: TextButton.styleFrom(
                         primary: const Color(0xFF5BB259),
                       ),
-                      onPressed: ()=>{}, 
+                      onPressed: ()=>{
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Signup()))
+
+                      }, 
                     child: const Text("Create One")
                     )
                   ])
