@@ -1,5 +1,5 @@
 // ignore_for_file: avoid_print
-
+import 'login_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -108,8 +108,8 @@ class LoginState extends State<Login> {
 
                     print(_email);
                     print(_password);
-
-                    //Send to API
+                    Auth user=Auth(_email,_password);
+                    user.authenticate();
                   },
                 )
                 ),
