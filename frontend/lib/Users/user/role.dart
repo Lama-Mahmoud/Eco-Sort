@@ -29,7 +29,7 @@ class RoleState extends State<Role> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children:  <Widget>[
-                const SizedBox(height:70),
+                const SizedBox(height:90),
                 const Text("Are You?",
                 style: TextStyle(
                     color: Color(0xFF999999), 
