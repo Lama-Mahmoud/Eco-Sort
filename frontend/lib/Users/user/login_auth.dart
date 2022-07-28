@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Auth{
   late String email;
@@ -17,11 +18,14 @@ class Auth{
     var response= await http.post(Uri.http("127.0.0.1:3000", "api/user/auth/login"),
       headers: {"Content-Type": "application/json"},
      body: body);
-    var data= response.headers;
-    print(email);
-    print(password);
-    state= response.statusCode;
-    print(data);
-    print(state);
+    var data= response.body;
+    var info=jsonDecode(data);
+    final prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+    await prefs.setString("authToken", info["authToken"]);
+    await prefs.setString("region", info["region"]);
+    await prefs.setString("role", info["role"]);
+    await prefs.setString("id", info["id"]);
+    
   }
 }
