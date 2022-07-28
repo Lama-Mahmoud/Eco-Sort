@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_const, avoid_print, file_names
 
 import 'package:flutter/material.dart';
+import 'package:frontend/Users/user/login.dart';
 import 'package:frontend/Users/user/signup_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -72,6 +73,7 @@ class RoleState extends State<Role> {
                       region.toString(),
                       "Recycler");
                       user.add();
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Login()));
                   },
                 ),
                   )
@@ -114,6 +116,7 @@ class RoleState extends State<Role> {
                       region.toString(),
                       "Recycler");
                       user.add();
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Login()));
                   },
                 ),
                   )
