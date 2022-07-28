@@ -140,7 +140,7 @@ class SignupState extends State<Signup> {
     List <String> items=['South', 'North', 'Beirut', 'Mont Lebanon','Nabatieh','Beqaa'];
     String? selectedItem="Beirut";
     return DropdownButtonFormField<String>(
-      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
+      style: const TextStyle(fontSize: 25.0, height: 1, color: Color(0xff999999)),
       decoration: const InputDecoration(
         enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF999999) ,width: 1))
       ),
@@ -233,6 +233,9 @@ class SignupState extends State<Signup> {
                     await prefs.setString('f_name', _fname);
                     await prefs.setString('city', _city);
                     await prefs.setString('region', _region);
+                    await prefs.setString('password', _password);
+                    String? hi=prefs.getString("city");
+                    print(hi);
                   },
                 )
                 ),),
