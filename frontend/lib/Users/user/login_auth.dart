@@ -26,6 +26,6 @@ class Auth{
     await prefs.setString("region", info["region"]);
     await prefs.setString("role", info["role"]);
     await prefs.setString("id", info["id"]);
-    
+
   }
 }

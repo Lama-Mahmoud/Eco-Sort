@@ -43,7 +43,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    next(context);
+    //next(context);
         
     return const Scaffold(
       backgroundColor:Color(0xFF5BB259),
