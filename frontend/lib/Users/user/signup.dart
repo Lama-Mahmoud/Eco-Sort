@@ -1,4 +1,6 @@
 // ignore_for_file: avoid_print
+
+import 'package:frontend/Users/user/Role.dart';
 import 'package:frontend/Users/user/login.dart';
 
 import 'package:flutter/material.dart';
@@ -16,14 +18,14 @@ class Signup extends StatefulWidget {
 class SignupState extends State<Signup> {
   late String _fname;
   late String _lname;
-  late String _email;
+  late String email;
   late String _password;
   late String _region;
   late String _city;
 
   Widget _buildFname() {
     return TextFormField(
-      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
+      style: const TextStyle(color: Color(0xff999999)),
       decoration: const InputDecoration(
         labelText: 'First Name',
         hintText: 'First Name ....',
@@ -44,7 +46,7 @@ class SignupState extends State<Signup> {
 
   Widget _buildLname() {
     return TextFormField(
-      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
+      style: const TextStyle(color: Color(0xff999999)),
       decoration: const InputDecoration(
         labelText: 'Last Name ',
         hintText: 'Last Name...',
@@ -66,7 +68,7 @@ class SignupState extends State<Signup> {
 // Email textfield
   Widget _buildEmail() {
     return TextFormField(
-      style: const TextStyle(fontSize: 15.0, height: 0.25, color: Color(0xff999999)),
+      style: const TextStyle(color: Color(0xff999999)),
       decoration: const InputDecoration(
         labelText: 'Email',
         hintText: 'Email...',
@@ -85,7 +87,7 @@ class SignupState extends State<Signup> {
         return null;
       },
       onSaved: ( value) {
-        _email = value!;
+        email = value!;
       },
     );
   }
@@ -116,7 +118,6 @@ class SignupState extends State<Signup> {
 // city textfield
   Widget _buildCity() {
     return TextFormField(
-      cursorHeight: 20,
       decoration: const InputDecoration(
         labelText: 'City',
         hintText: 'City...',
@@ -140,7 +141,6 @@ class SignupState extends State<Signup> {
     List <String> items=['South', 'North', 'Beirut', 'Mont Lebanon','Nabatieh','Beqaa'];
     String? selectedItem="Beirut";
     return DropdownButtonFormField<String>(
-      style: const TextStyle(fontSize: 25.0, height: 1, color: Color(0xff999999)),
       decoration: const InputDecoration(
         enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF999999) ,width: 1))
       ),
@@ -155,7 +155,7 @@ class SignupState extends State<Signup> {
             print(selectedItem);
           }) ,
           onSaved: (value){
-            _city=value!;          },
+            _region=value!;          },
         );
   }
 
@@ -226,16 +226,23 @@ class SignupState extends State<Signup> {
                     backgroundColor: const Color(0xFF5BB259),
                     primary: const Color(0xFFFEFEFE),
                   ),onPressed: () async {
+                    if (!_formKey.currentState!.validate()) {
+                      return;
+                    }
+
+                    _formKey.currentState!.save();
+                    print(_city);
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.clear();
-                    await prefs.setString('email', _email);
-                    await prefs.setString('l_nmae', _lname);
+                    await prefs.setString('email', email);
+                    await prefs.setString('l_name', _lname);
                     await prefs.setString('f_name', _fname);
                     await prefs.setString('city', _city);
                     await prefs.setString('region', _region);
                     await prefs.setString('password', _password);
-                    String? hi=prefs.getString("city");
-                    print(hi);
+                    print(email);
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Role()));
+                    
                   },
                 )
                 ),),
