@@ -11,8 +11,8 @@ class User{
   User(this.fname,this.lname,this.email,this.password,this.city,this.region,this.role);
  
   void add () async{
-    var body= jsonEncode({"f_name":fname,
-    "l_name":lname,
+    var body= jsonEncode({"first_name":fname,
+    "last_name":lname,
     "email":email,
     "password":password,
     "city":city,
