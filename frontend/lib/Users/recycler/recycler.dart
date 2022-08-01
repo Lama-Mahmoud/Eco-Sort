@@ -16,7 +16,7 @@ class Recycler extends StatefulWidget {
 class RecyclerState extends State<Recycler> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  static const IconData compost_outlined = IconData(0xf05ce, fontFamily: 'MaterialIcons');
+  int _currentIndex=0;
 
 
   @override
@@ -24,20 +24,29 @@ class RecyclerState extends State<Recycler> {
     return Scaffold(
       body: Container(),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        iconSize: 35,
+        type: BottomNavigationBarType.fixed,
         fixedColor: Colors.white,
         backgroundColor: const Color(0xFF5BB259),
         items:const [
-        BottomNavigationBarItem(icon: Icon(Icons.home),
+        BottomNavigationBarItem(icon: Icon(Icons.yard),
         label: "Home",),
 
-        BottomNavigationBarItem(icon: Icon(Icons.paste_rounded),
+        BottomNavigationBarItem(icon: Icon(Icons.feed_outlined),
         label: "Complain",
         ),
 
         BottomNavigationBarItem(icon: Icon(Icons.person),
         label: "Profile",),
         
-      ],)
+      ],
+      onTap: (index){
+        setState(() {
+          _currentIndex=index;
+        });
+      },
+      )
     );
   }
   
