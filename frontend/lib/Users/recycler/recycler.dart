@@ -1,4 +1,6 @@
 
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,12 @@ class Recycler extends StatefulWidget {
 }
 
 class RecyclerState extends State<Recycler> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final tabs=[
+    Center(child:Recycle()),
+    Center(child:Complain()),
+    Center(Me())
+  ];
 
   int _currentIndex=0;
 
