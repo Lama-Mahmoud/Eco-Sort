@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:frontend/Users/user/signup.dart';
+import 'package:frontend/Users/widgets/email.dart';
+import 'package:frontend/Users/widgets/password.dart';
 
 import 'login_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,55 +16,15 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
-  late String _email;
-  late String _password;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget _buildEmail() {
-    return TextFormField(
-      decoration: const InputDecoration(
-        labelText: 'Email',
-        hintText: 'Email...',
-        border: OutlineInputBorder() ),
-      validator: ( value) {
-        if (value ==null) {
-          return 'Email is Required';
-        }
-
-        if (!RegExp(
-                r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-            .hasMatch(value)) {
-          return 'Please enter a valid email Address';
-        }
-
-        return null;
-      },
-      onSaved: ( value) {
-        _email = value!;
-      },
-    );
+    return emailWidget;
   }
 
   Widget _buildPassword() {
-    return TextFormField(
-      obscureText: true,
-      obscuringCharacter: "*",
-      decoration: const InputDecoration(
-        labelText: 'Password',
-        hintText: 'Password...',
-        border: OutlineInputBorder() ),
-      validator: ( value) {
-        if (value ==null) {
-          return 'Password is Required';
-        }
-
-        return null;
-      },
-      onSaved: ( value) {
-        _password = value!;
-      },
-    );
+    return passwordWidget;
   }
 
 
@@ -108,9 +70,9 @@ class LoginState extends State<Login> {
 
                     _formKey.currentState!.save();
 
-                    print(_email);
-                    print(_password);
-                    Auth user=Auth(_email,_password);
+                    print(password);
+                    print(email);
+                    Auth user=Auth(email,password);
                     user.authenticate();
                   },
                 )
