@@ -11,19 +11,23 @@ class User{
   User(this.fname,this.lname,this.email,this.password,this.city,this.region,this.role);
  
   void add () async{
+
+    //encoding data to json 
     var body= jsonEncode({"first_name":fname,
-    "last_name":lname,
-    "email":email,
-    "password":password,
-    "city":city,
-    "region":region,
-    "role":role});
+      "last_name":lname,
+      "email":email,
+      "password":password,
+      "city":city,
+      "region":region,
+      "role":role});
+
+      //loading the data to the body of the api
     var response= await http.post(Uri.http("127.0.0.1:3000", "api/user/auth/signup"),
       headers: {"Content-Type": "application/json"},
      body: body);
+
+     //response of api
     var data= response.headers;
-    print(email);
-    print(password);
     int state= response.statusCode;
     print(data);
     print(state);
