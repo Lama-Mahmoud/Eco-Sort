@@ -1,10 +1,9 @@
 
-import 'dart:html';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/Users/recycler/tabs/complain.dart';
+import 'package:frontend/Users/recycler/tabs/me.dart';
+import 'package:frontend/Users/recycler/tabs/recycle.dart';
 
-import '';
 
 class Recycler extends StatefulWidget {
   const Recycler({Key? key}) : super(key: key);
@@ -18,9 +17,9 @@ class Recycler extends StatefulWidget {
 class RecyclerState extends State<Recycler> {
 
   final tabs=[
-    Center(child:Recycle()),
-    Center(child:Complain()),
-    Center(Me())
+    const Center(child:Recycle()),
+    const Center(child:Complain()),
+    const Center(child: Profile())
   ];
 
   int _currentIndex=0;
@@ -29,10 +28,10 @@ class RecyclerState extends State<Recycler> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        iconSize: 35,
+        iconSize: 30,
         type: BottomNavigationBarType.fixed,
         fixedColor: Colors.white,
         backgroundColor: const Color(0xFF5BB259),
