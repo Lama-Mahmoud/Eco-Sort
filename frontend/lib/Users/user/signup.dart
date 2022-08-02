@@ -4,6 +4,8 @@ import 'package:frontend/Users/user/Role.dart';
 import 'package:frontend/Users/user/login.dart';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/Users/widgets/email.dart';
+import 'package:frontend/Users/widgets/password.dart';
 import 'package:frontend/Users/widgets/region.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -67,52 +69,12 @@ class SignupState extends State<Signup> {
 
 // Email textfield
   Widget _buildEmail() {
-    return TextFormField(
-      style: const TextStyle(color: Color(0xff999999)),
-      decoration: const InputDecoration(
-        labelText: 'Email',
-        hintText: 'Email...',
-        border: OutlineInputBorder() ),
-      validator: ( value) {
-        if (value ==null) {
-          return 'Email is Required';
-        }
-      // Email validation
-        if (!RegExp(
-                r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-            .hasMatch(value)) {
-          return 'Please enter a valid email Address';
-        }
-
-        return null;
-      },
-      onSaved: ( value) {
-        email = value!;
-      },
-    );
+    return emailWidget;
   }
 
 // Password textfield
   Widget _buildPassword() {
-    return TextFormField(
-      obscureText: true,
-      obscuringCharacter: "*",
-      decoration: const InputDecoration(
-        labelText: 'Password',
-        hintText: 'Password...',
-        border: OutlineInputBorder() ),
-       //password validation 
-      validator: ( value) {
-        if (value ==null) {
-          return 'Password is Required';
-        }
-
-        return null;
-      },
-      onSaved: ( value) {
-        _password = value!;
-      },
-    );
+    return passwordWidget;
   }
 
 // city textfield
