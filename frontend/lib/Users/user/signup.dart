@@ -4,6 +4,7 @@ import 'package:frontend/Users/user/Role.dart';
 import 'package:frontend/Users/user/login.dart';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/Users/widgets/region.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatefulWidget {
@@ -20,7 +21,6 @@ class SignupState extends State<Signup> {
   late String _lname;
   late String email;
   late String _password;
-  late String _region;
   late String _city;
 
   Widget _buildFname() {
@@ -138,25 +138,7 @@ class SignupState extends State<Signup> {
 
 
   Widget _buildRegion(){
-    List <String> items=['South', 'North', 'Beirut', 'Mont Lebanon','Nabatieh','Beqaa'];
-    String? selectedItem="Beirut";
-    return DropdownButtonFormField<String>(
-      decoration: const InputDecoration(
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF999999) ,width: 1))
-      ),
-      value: selectedItem,
-      items: items
-        .map((item) => DropdownMenuItem(
-          value: item,
-          child: Text(item),)
-          ).toList(),
-          onChanged:(item) =>setState(() {
-            selectedItem=item;
-            print(selectedItem);
-          }) ,
-          onSaved: (value){
-            _region=value!;          },
-        );
+    return region;
   }
 
   
@@ -238,7 +220,7 @@ class SignupState extends State<Signup> {
                     await prefs.setString('l_name', _lname);
                     await prefs.setString('f_name', _fname);
                     await prefs.setString('city', _city);
-                    await prefs.setString('region', _region);
+                    await prefs.setString('region', regionchoice);
                     await prefs.setString('password', _password);
                     print(email);
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Role()));
