@@ -10,7 +10,12 @@ late int amount;
       validator: ( value) {
         if (value ==null) {
           return 'Amount is Required';
+        
         }
+        amount=value as int;
+        if (amount<30){ 
+          return 'Minimum amount is 30 Kgs';
+          }
 
         return null;
       },
