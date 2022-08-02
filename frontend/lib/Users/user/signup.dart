@@ -4,7 +4,10 @@ import 'package:frontend/Users/user/Role.dart';
 import 'package:frontend/Users/user/login.dart';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/Users/widgets/city.dart';
 import 'package:frontend/Users/widgets/email.dart';
+import 'package:frontend/Users/widgets/f_name.dart';
+import 'package:frontend/Users/widgets/l_name.dart';
 import 'package:frontend/Users/widgets/password.dart';
 import 'package:frontend/Users/widgets/region.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,53 +22,14 @@ class Signup extends StatefulWidget {
 }
 
 class SignupState extends State<Signup> {
-  late String _fname;
-  late String _lname;
-  late String email;
-  late String _password;
-  late String _city;
 
   Widget _buildFname() {
-    return TextFormField(
-      style: const TextStyle(color: Color(0xff999999)),
-      decoration: const InputDecoration(
-        labelText: 'First Name',
-        hintText: 'First Name ....',
-        border: OutlineInputBorder() ),
-      validator: ( value) {
-        if (value ==null) {
-          return 'First Name is Required';
-        }
-        return null;
-      },
-      onSaved: ( value) {
-        _fname = value!;
-      },
-    );
+    return fNameWidget;
   }
-
-
 
   Widget _buildLname() {
-    return TextFormField(
-      style: const TextStyle(color: Color(0xff999999)),
-      decoration: const InputDecoration(
-        labelText: 'Last Name ',
-        hintText: 'Last Name...',
-        border: OutlineInputBorder() ),
-      validator: ( value) {
-        if (value ==null) {
-          return 'LAst Name is Required';
-        }
-        return null;
-      },
-      onSaved: ( value) {
-        _lname = value!;
-      },
-    );
+    return lNameWidget;
   }
-
-
 
 // Email textfield
   Widget _buildEmail() {
@@ -79,23 +43,7 @@ class SignupState extends State<Signup> {
 
 // city textfield
   Widget _buildCity() {
-    return TextFormField(
-      decoration: const InputDecoration(
-        labelText: 'City',
-        hintText: 'City...',
-        border: OutlineInputBorder() ),
-       //password validation 
-      validator: ( value) {
-        if (value ==null) {
-          return 'City is Required';
-        }
-
-        return null;
-      },
-      onSaved: ( value) {
-        _city = value!;
-      },
-    );
+    return cityWidget;
   }
 
 
@@ -175,15 +123,14 @@ class SignupState extends State<Signup> {
                     }
 
                     _formKey.currentState!.save();
-                    print(_city);
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.clear();
                     await prefs.setString('email', email);
-                    await prefs.setString('l_name', _lname);
-                    await prefs.setString('f_name', _fname);
-                    await prefs.setString('city', _city);
+                    await prefs.setString('l_name', lname);
+                    await prefs.setString('f_name', fname);
+                    await prefs.setString('city', city);
                     await prefs.setString('region', regionchoice);
-                    await prefs.setString('password', _password);
+                    await prefs.setString('password', password);
                     print(email);
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Role()));
                     
